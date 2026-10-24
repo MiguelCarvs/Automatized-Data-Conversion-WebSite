@@ -1,0 +1,536 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #f7f7f6;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --primary: #2b5ce6;
+  --primary-foreground: #ffffff;
+  --secondary: #efefed;
+  --muted-foreground: #6b6b6b;
+  --border: #e0e0dd;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: "DM Sans", system-ui, sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+button, select, input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  background: var(--primary);
+}
+
+.logo svg {
+  width: 14px;
+  height: 14px;
+}
+
+.header-button,
+.text-button {
+  color: var(--muted-foreground);
+  background: transparent;
+  cursor: pointer;
+  transition: color .15s;
+}
+
+.header-button:hover,
+.text-button:hover {
+  color: var(--foreground);
+}
+
+.header-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mono {
+  font-family: "DM Mono", monospace;
+}
+
+.uppercase-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.main-landing {
+  flex: 1;
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 96px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.eyebrow {
+  margin-bottom: 32px;
+  color: var(--primary);
+}
+
+.hero-title {
+  margin: 0 0 24px;
+  font-size: 48px;
+  line-height: 1.1;
+  font-weight: 300;
+  letter-spacing: -.02em;
+}
+
+.hero-title strong {
+  font-weight: 600;
+}
+
+.hero-text {
+  max-width: 448px;
+  margin: 0 0 48px;
+  color: var(--muted-foreground);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.primary-button {
+  padding: 12px 24px;
+  color: var(--primary-foreground);
+  background: var(--primary);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity .15s;
+}
+
+.primary-button:hover:not(:disabled) {
+  opacity: .88;
+}
+
+.formats {
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.formats-title {
+  display: block;
+  margin-bottom: 16px;
+  color: var(--muted-foreground);
+}
+
+.badges {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.badge {
+  padding: 4px 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--muted-foreground);
+  font: 500 12px "DM Mono", monospace;
+  letter-spacing: .08em;
+}
+
+.formats-description {
+  max-width: 384px;
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.footer {
+  padding: 20px 32px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+
+.main-converter {
+  flex: 1;
+  width: 100%;
+  max-width: 672px;
+  margin: 0 auto;
+  padding: 56px 32px;
+}
+
+.converter-title {
+  margin: 0 0 4px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -.015em;
+}
+
+.converter-subtitle {
+  margin: 0 0 40px;
+  color: var(--muted-foreground);
+  font-size: 14px;
+}
+
+.drop-zone {
+  min-height: 180px;
+  margin-bottom: 24px;
+  border: 2px dashed var(--border);
+  background: var(--card);
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+
+.drop-zone.dragging {
+  border-color: var(--primary);
+  background: rgba(43, 92, 230, .03);
+}
+
+.upload-empty {
+  min-height: 176px;
+  padding: 48px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.upload-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--muted-foreground);
+}
+
+.upload-copy {
+  text-align: center;
+}
+
+.upload-copy p {
+  margin: 0;
+}
+
+.upload-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.upload-subtitle {
+  margin-top: 4px !important;
+  color: var(--muted-foreground);
+  font-size: 12px;
+}
+
+.secondary-button {
+  padding: 8px 16px;
+  margin-top: 8px;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.secondary-button:hover {
+  background: var(--border);
+}
+
+.file-info {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-details {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+}
+
+.file-icon {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: grid;
+  place-items: center;
+  background: var(--primary);
+  color: white;
+}
+
+.file-name {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.file-meta {
+  margin: 2px 0 0;
+  color: var(--muted-foreground);
+  font: 12px "DM Mono", monospace;
+}
+
+.file-format {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  background: var(--secondary);
+  color: var(--primary);
+  font-size: 10px;
+  letter-spacing: .06em;
+}
+
+.text-button {
+  flex: 0 0 auto;
+  font-size: 12px;
+}
+
+.hidden {
+  display: none;
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted-foreground);
+}
+
+.field-value,
+.select-wrap select {
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--foreground);
+  font-size: 14px;
+}
+
+.field-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.field-value.empty {
+  color: var(--muted-foreground);
+}
+
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap select {
+  appearance: none;
+  background: var(--card);
+  cursor: pointer;
+  outline: none;
+  padding-right: 36px;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--muted-foreground);
+}
+
+.convert-button {
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: opacity .15s;
+}
+
+.convert-button:disabled {
+  background: var(--secondary);
+  color: var(--muted-foreground);
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.feedback {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border: 1px solid #f87171;
+  background: #fff5f5;
+  color: #b91c1c;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.success {
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.success-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.success-icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  background: #ecfdf5;
+  color: #16a34a;
+}
+
+.success-title,
+.success-file {
+  margin: 0;
+}
+
+.success-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.success-file {
+  margin-top: 2px;
+  color: var(--muted-foreground);
+  font: 12px "DM Mono", monospace;
+}
+
+.success-actions {
+  padding: 16px 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.success-actions .primary-button {
+  flex: 1;
+}
+
+.success-actions .secondary-button {
+  margin: 0;
+  padding: 10px 16px;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .header,
+  .footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .main-landing,
+  .main-converter {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero-title {
+    font-size: 38px;
+  }
+
+  .fields {
+    grid-template-columns: 1fr;
+  }
+
+  .footer {
+    gap: 12px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .success-actions {
+    flex-direction: column;
+  }
+
+  .file-info {
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
